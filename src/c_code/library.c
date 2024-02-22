@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 
-void hello_for_ccode() {
+const char* hello_for_ccode() {
     printf("Hello World for code static!\n");
+    return "hello";
 }

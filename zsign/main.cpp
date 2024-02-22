@@ -13,7 +13,7 @@
 
 using namespace std;
 
-bool sign_ipa(
+int sign_ipa(
         const char *ipa_path,
         const char *key_path,
         const char *mp_path,

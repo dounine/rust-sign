@@ -2,7 +2,7 @@
 
 extern "C" {
 
-int sign_ipa(
+bool sign_ipa(
         const char *ipa_path,
         const char *key_path,
         const char *mp_path,
