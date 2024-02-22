@@ -33,7 +33,7 @@ int sign_ipa(
     if (!zSignAsset.Init("", keyPath, mpPath, "", "1")) {
 //        cerr << "init sign asset failed" << endl;
         snprintf(error, 1024, "init sign asset failed");
-        return false;
+        return -1;
     }
 
     ZTimer timer;
@@ -74,7 +74,7 @@ int sign_ipa(
             enableCache
     );
     timer.PrintResult(bRet, "from sign.ipadump.com>>> Signed %s!", bRet ? "OK" : "Failed");
-    return true;
+    return 1;
 }
 
 int main() {

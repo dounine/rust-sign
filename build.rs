@@ -35,9 +35,7 @@ fn main() {
         .warnings(false)
         .std("c++11")
         .flag("-c")
-        // .shared_flag(true)
-        // .flag("-lssl")
-        // .flag("-lcrypto")
+        .shared_flag(false)
         .flag("-I/opt/homebrew/Cellar/openssl@3/3.2.0_1/include")
         .flag("-L/opt/homebrew/Cellar/openssl@3/3.2.0_1/lib")
         .file("zsign/common/base64.cpp")
@@ -52,11 +50,11 @@ fn main() {
         .file("zsign/main.cpp")
         .compile("zsign");
 
+    println!("cargo:rustc-link-lib=ssl");
+    println!("cargo:rustc-link-lib=crypto");
+    println!("cargo:rustc-link-search=/opt/homebrew/Cellar/openssl@3/3.2.0_1/lib");
     println!("cargo:rerun-if-changed=zsign/common/common.cpp");
-
-    // println!("cargo:rustc-link-lib=dylib=ssl");
-    // println!("cargo:rerun-if-changed=zsign/common/common.cpp");
-    // println!("cargo:rerun-if-changed=build.rs");
+    println!("cargo:rerun-if-changed=build.rs");
 
     // builder
     //     .files(&[
