@@ -30,31 +30,31 @@ fn main() {
 
 
     //依赖openssl
-    builder
-        .cpp(true)
-        .warnings(false)
-        .std("c++11")
-        .flag("-c")
-        .shared_flag(false)
-        .flag("-I/opt/homebrew/Cellar/openssl@3/3.2.0_1/include")
-        .flag("-L/opt/homebrew/Cellar/openssl@3/3.2.0_1/lib")
-        .file("zsign/common/base64.cpp")
-        .file("zsign/common/json.cpp")
-        .file("zsign/common/common.cpp")
-        .file("zsign/archo.cpp")
-        .file("zsign/bundle.cpp")
-        .file("zsign/macho.cpp")
-        .file("zsign/openssl.cpp")
-        .file("zsign/signing.cpp")
-        .file("zsign/zsign.cpp")
-        .file("zsign/main.cpp")
-        .compile("zsign");
-
-    println!("cargo:rustc-link-lib=ssl");
-    println!("cargo:rustc-link-lib=crypto");
-    println!("cargo:rustc-link-search=/opt/homebrew/Cellar/openssl@3/3.2.0_1/lib");
-    println!("cargo:rerun-if-changed=zsign/common/common.cpp");
-    println!("cargo:rerun-if-changed=build.rs");
+    // builder
+    //     .cpp(true)
+    //     .warnings(false)
+    //     .std("c++11")
+    //     .flag("-c")
+    //     .shared_flag(false)
+    //     .flag("-I/opt/homebrew/Cellar/openssl@3/3.2.0_1/include")
+    //     .flag("-L/opt/homebrew/Cellar/openssl@3/3.2.0_1/lib")
+    //     .file("zsign/zsign/common/base64.cpp")
+    //     .file("zsign/zsign/common/json.cpp")
+    //     .file("zsign/zsign/common/common.cpp")
+    //     .file("zsign/zsign/archo.cpp")
+    //     .file("zsign/zsign/bundle.cpp")
+    //     .file("zsign/zsign/macho.cpp")
+    //     .file("zsign/zsign/openssl.cpp")
+    //     .file("zsign/zsign/signing.cpp")
+    //     .file("zsign/zsign/zsign.cpp")
+    //     .file("zsign/zsign/zsign.cpp")
+    //     .compile("zsign");
+    //
+    // println!("cargo:rustc-link-lib=ssl");
+    // println!("cargo:rustc-link-lib=crypto");
+    // println!("cargo:rustc-link-search=/opt/homebrew/Cellar/openssl@3/3.2.0_1/lib");
+    // println!("cargo:rerun-if-changed=zsign/common/common.cpp");
+    // println!("cargo:rerun-if-changed=build.rs");
 
     // builder
     //     .files(&[
@@ -64,7 +64,7 @@ fn main() {
     //         "zsign/archo.cpp",
     //         "zsign/bundle.cpp",
     //         "zsign/macho.cpp",
-    //         "zsign/main.cpp",
+    //         "zsign/zsign.cpp",
     //         "zsign/openssl.cpp",
     //         "zsign/signing.cpp",
     //         "zsign/zsign.cpp",
@@ -96,7 +96,7 @@ fn main() {
 
     // println!("cargo:rustc-link-lib=zsign"); //指定库
     // let bindings = bindgen::Builder::default()
-    //     .header("./lib/main.h") //指定头文件，可以指定多个.h文件作为输入
+    //     .header("./lib/zsign.h") //指定头文件，可以指定多个.h文件作为输入
     //     .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
     //     .generate()
     //     .expect("Unable to generate bindings");
