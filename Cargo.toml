@@ -1,16 +1,71 @@
 [package]
 name = "rust-sign"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
-#build = "build.rs"
+authors = ["lake <amwoqmgo@mail.com>"]
+description = "ipa sign for rust web"
+repository = "https://github.com/dounine/rust-sign"
+publish = false
+
+[workspace.package]
+version = "0.0.1"
+edition = "2021"
+authors = ["dounine <amwoqmgo@mail.com>"]
+description = "ipa sign rust web"
+repository = "https://github.com/dounine/rust-sign"
+publish = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+
 [workspace]
-
+members = [
+    ".",
+    "api",
+    "entity",
+    "service",
+    "migration",
+    "util",
+    "macros"
+]
 [dependencies]
-zsign = { path = "../rust-zsign" }
-libc = "0.2.152"
+api = { path = "api" }
 
-[build-dependencies]
-bindgen = "0.69.4"
-cc = { version = "1.0.83", features = ["parallel"] }
+[workspace.dependencies]
+api = { path = "api" }
+entity = { path = "entity" }
+migration = { path = "migration" }
+service = { path = "service" }
+util = { path = "util" }
+macros = { path = "macros" }
+qrcode = { version = "0.13.0" }
+image = { version = "0.24.8" }
+envy = { version = "0.4.2" }
+wechat-pay-rust-sdk = { version = "0.2.11" }
+actix-web = { version = "4.4.1" }
+tokio = { version = "1.35.1", features = ["macros"] }
+actix-governor = "0.5.0"
+dotenvy = "0.15.7"
+uuid = { version = "1.7.0", features = ["serde", "v4"] }
+sea-orm = { version = "0.12.10", features = ["sqlx-postgres", "runtime-async-std-native-tls", "debug-print"] }
+serde = { version = "1.0.195", features = ["derive"] }
+serde_json = "1.0.80"
+clap = { version = "4.4.11", features = ["derive"] }
+tracing = "0.1.40"
+tracing-subscriber = "0.3.18"
+tracing-actix-web = "0.7.9"
+tracing-appender = "0.2.3"
+listenfd = "1.0.1"
+cached = { version = "0.48.0", features = ["async", "redis_async_std"] }
+jsonwebtoken = "9.2.0"
+thiserror = "1.0.56"
+chrono = "0.4.31"
+md5 = { version = "0.7.0" }
+async-std = { version = "1.10.0", features = ["attributes", "tokio1"] }
+sea-orm-migration = { version = "0.12.10", features = ["sqlx-postgres", "runtime-tokio-rustls"] }
+
+[workspace.dev-dependencies]
+dotenvy = "0.15.7"
+tracing = "0.1.40"
+tracing-subscriber = "0.3.18"
+tokio = { version = "1.35.1", features = ["macros", "rt"] }

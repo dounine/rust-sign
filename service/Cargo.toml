@@ -1,0 +1,27 @@
+[package]
+name = "service"
+version = { workspace = true }
+edition = { workspace = true }
+publish = { workspace = true }
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+util = { path = "../util" }
+entity = { path = "../entity" }
+thiserror = { workspace = true }
+sea-orm = { workspace = true, features = ["sqlx-postgres", "runtime-async-std-native-tls", "debug-print"] }
+tracing = { workspace = true }
+chrono = { workspace = true }
+[dev-dependencies]
+dotenvy = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+sea-orm = { workspace = true}
+tokio = { workspace = true, features = ["macros", "rt"] }
+
+[features]
+mock = ["sea-orm/mock"]
+[[test]]
+name = "mock"
+required-features = ["mock"]

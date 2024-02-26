@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM alpine:3.19
 WORKDIR /app
 RUN apk add --no-cache --virtual .build-deps curl gcc zip unzip openssl-dev openssl-libs-static
 RUN curl -sSL https://sh.rustup.rs | sh

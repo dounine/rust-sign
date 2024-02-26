@@ -15,3 +15,5 @@ Cargo.lock
 ipa/tmp
 **/.xmake
 **/build
+*.pem
+logs/

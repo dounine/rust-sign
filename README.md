@@ -1,22 +1,21 @@
-# rust-ffi
-rust同时调用c静态库跟动态库方法 
+# rust-ipa
 
-# 生成动态库
+## 开发
+自动重载
 ```bash
-cd lib
-mkdir build
-cd build
-cmake ..
-make
+cargo install systemfd
+# 以下可复用端口
+systemfd --no-pid -s http::8080 -- cargo watch -x run
 ```
-# 编译程序
+删除数据库
 ```bash
-cargo build
+sea-orm-cli migrate down
 ```
-# 运行
-为了能够找到动态库，需要将动态库所在目录加入到环境变量中
-这里使用的是MacOS，所以使用的是DYLD_LIBRARY_PATH
+创建数据库
 ```bash
-export DYLD_LIBRARY_PATH=./lib/build
-cargo run
+sea-orm-cli migrate up
+```
+自动删除并创
+```bash
+sea-orm-cli migrate refresh
 ```

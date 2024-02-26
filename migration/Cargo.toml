@@ -1,0 +1,16 @@
+[package]
+name = "migration"
+version = { workspace = true }
+edition = { workspace = true }
+publish = { workspace = true }
+
+[lib]
+name = "migration"
+path = "src/lib.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+entity = { path = "../entity" }
+
+async-std = { workspace = true }
+sea-orm-migration = { workspace = true }
